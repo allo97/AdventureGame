@@ -20,7 +20,10 @@ public class Main {
 
         int loc = 1;
         while(true) {
-            System.out.println(locations.get(loc).getDescription());
+            if(locations.containsKey(loc)) {
+                System.out.println(locations.get(loc).getDescription());
+            }
+
             if(loc == 0) {
                 break;
             }
