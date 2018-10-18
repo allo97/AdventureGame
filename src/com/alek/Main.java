@@ -70,7 +70,7 @@ public class Main {
         }
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++");
-        String[] building = "You are inside a building , a well house for a small spring".split(",");
+        String[] building = "You are inside a building, a well house for a small spring".split(", ");
         for(String i: building) {
             System.out.println(i);
         }
