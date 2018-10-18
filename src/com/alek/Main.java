@@ -22,47 +22,51 @@ public class Main {
         locations.get(1).addExit("E", 3);
         locations.get(1).addExit("S", 4);
         locations.get(1).addExit("N", 5);
-        //locations.get(1).addExit("Q", 0);
 
         locations.get(2).addExit("N", 5);
-        //locations.get(2).addExit("Q", 0);
 
         locations.get(3).addExit("W", 1);
-        //locations.get(3).addExit("Q", 0);
 
         locations.get(4).addExit("N", 1);
         locations.get(4).addExit("W", 2);
-        //locations.get(4).addExit("Q", 0);
 
         locations.get(5).addExit("S", 1);
         locations.get(5).addExit("W", 2);
-        //locations.get(5).addExit("Q", 0);
 
         int loc = 1;
-//        while(true) {
-//            if(locations.containsKey(loc)) {
-//                System.out.println(locations.get(loc).getDescription());
-//            }
-//
-//            if(loc == 0) {
-//                break;
-//            }
-//
-//            Map<String, Integer> exits = locations.get(loc).getExits();
-//            System.out.println("Available exits are");
-//            for(String exit:exits.keySet()) {
-//                System.out.print(exit + ", ");
-//            }
-//            System.out.println();
-//            String direction  = scanner.nextLine().toUpperCase();
-//
-//            if(exits.containsKey(direction)) {
+        while(true) {
+            System.out.println(locations.get(loc).getDescription());
+
+            if(loc == 0) {
+                break;
+            }
+
+            Map<String, Integer> exits = locations.get(loc).getExits();
+            System.out.println("Available exits are");
+            for(String exit:exits.keySet()) {
+                System.out.print(exit + ", ");
+            }
+            System.out.println();
+            String direction  = scanner.nextLine().toUpperCase();
+
+
+            direction = splitString(direction);
+
+//            if(direction != null) {
 //                loc = exits.get(direction);
 //            } else {
 //                System.out.println("You cannot go in that direction");
 //            }
-//
-//        }
+
+            if(exits.containsKey(direction)) {
+                loc = exits.get(direction);
+            } else {
+                System.out.println("You cannot go in that direction");
+            }
+
+        }
+
+
 
         String[] road = "You are standing at the end of a road before a small brick building".split(" ");
         for(String i: road) {
@@ -70,9 +74,15 @@ public class Main {
         }
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+
         String[] building = "You are inside a building, a well house for a small spring".split(", ");
         for(String i: building) {
             System.out.println(i);
         }
+    }
+
+    public static String splitString(String direction) {
+        String[] array = direction.split(" ");
+        return Character.toString(array[array.length-1].charAt(0));
     }
 }
