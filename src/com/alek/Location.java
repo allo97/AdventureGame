@@ -12,7 +12,12 @@ public class Location {
     public Location(int locationID, String description, Map<String, Integer> exits) {
         this.locationID = locationID;
         this.description = description;
-        this.exits = new HashMap<String, Integer>(exits); //doing this we are making a copy of exits we arent working on the passed exit which could be removed
+        if(exits != null) {
+            this.exits = new HashMap<String, Integer>(exits);
+        } else {
+            this.exits = new HashMap<String, Integer>();
+        }
+         //doing this we are making a copy of exits we arent working on the passed exit which could be removed
         this.exits.put("Q", 0);
     }
 
