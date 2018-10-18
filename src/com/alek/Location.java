@@ -8,16 +8,17 @@ public class Location {
     private final String description;
     private final Map<String, Integer> exits;  //and locations has a map with exits
 
-    public Location(int locationID, String description) {
+    //once an instance is created it cant be changed
+    public Location(int locationID, String description, Map<String, Integer> exits) {
         this.locationID = locationID;
         this.description = description;
-        this.exits = new HashMap<String, Integer>();
+        this.exits = new HashMap<String, Integer>(exits); //doing this we are making a copy of exits we arent working on the passed exit which could be removed
         this.exits.put("Q", 0);
     }
 
-    public void addExit(String direction, int location) {  //and there we can add exits and we have to ensure direction and location in this case value and it will be relating to the locationID which is a key
-        exits.put(direction, location);
-    }
+//    public void addExit(String direction, int location) {  //and there we can add exits and we have to ensure direction and location in this case value and it will be relating to the locationID which is a key
+//        exits.put(direction, location);
+//    }
 
     public int getLocationID() {
         return locationID;
